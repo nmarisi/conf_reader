@@ -9,12 +9,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/file.h>
-
-#ifdef STAND_ALONE_TEST
-typedef int bool;
-#define true 1
-#define false 0
-#endif
+#include <stdbool.h>
 
 #include "conf_reader.h"
 
