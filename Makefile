@@ -8,6 +8,8 @@ conf_reader.o: conf_reader.c $(HEADERS)
 conf_reader: conf_reader.o
 	gcc conf_reader.o -o conf_reader
 
+test: 
+	./conf_reader
 clean:
 	-rm -f conf_reader.o
 	-rm -f conf_reader
