@@ -211,7 +211,7 @@ void
 saveconf(char *file_name, char *keyreq, char *keyval, char *sectionHeader) 
 {
     int fd; /* used to generate a random file */
-    FILE *tmpfp;
+    FILE *tmpfp = NULL;
     FILE *fp;
     
     char buf[1024];
@@ -428,7 +428,7 @@ void release_config(entry *params, value *vals)
 void removeKey(char *file_name, char *keyreq) 
 {
     int fd; /* used to generate a random file */
-    FILE *tmpfp;
+    FILE *tmpfp = NULL;
     FILE *fp;
     
     char buf[1024];
@@ -582,7 +582,7 @@ void writeBoolKey(char *section, char *key, bool keyValue, char *configFile)
 
 static entry param_config[] = {
     {"UK", _STRING},
-#define FISH_VALUE param_values[0].STRING
+#define ENTRY_VALUE param_values[0].STRING
     {NULL, _END}      /* Keep this terminator. */
 };
 
@@ -611,7 +611,7 @@ int main(int argc, char **argv)
     /* read test */
     s = get_config("/tmp/test", param_config, param_values);
     if (s)
-        printf("Final string: %s\n", FISH_VALUE);
+        printf("Final string: %s\n", ENTRY_VALUE);
     release_config(param_config, param_values);
     
     return !s;
