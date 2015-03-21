@@ -235,11 +235,13 @@ saveconf(char *file_name, char *keyreq, char *keyval, char *sectionHeader)
     }
 
     
-    fp = fopen(file_name, "r+");
+    fp = fopen(file_name, "a+");
     if (!fp) {
         fprintf(stderr, "error in file opening\n");
         return;
     }
+
+    rewind(fp);
 
     /* Get file lock. */
     if (flock(fileno(fp), LOCK_EX)) {
@@ -603,9 +605,6 @@ int main(int argc, char **argv)
     bool     s;
     
     /* write test */
-    FILE *fp = fopen("/tmp/test", "a+");
-    fclose(fp);
-    
     set_config("/tmp/test", keys_to_save, values_to_save);
     
     /* read test */
