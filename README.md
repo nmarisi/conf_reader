@@ -96,7 +96,7 @@ void release_config(entry *params, value *vals)
 
 Here's an example for clarification:
 
-```
+```C
 #include <stdio.h>
 #include "conf_reader.h"
 
